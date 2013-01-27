@@ -25,8 +25,8 @@ public class ActivityWebView extends Activity
     /**
      * Get these values after registering your oauth app at: https://foursquare.com/oauth/
      */
-    public static final String CALLBACK_URL = "your callback url";
-    public static final String CLIENT_ID = "your client id";
+    public static final String CALLBACK_URL = "https://www.p1.com/callback1";
+    public static final String CLIENT_ID = "WA3WC32ZFC0ZNUFEIZLYQBJSVKTVRBCS10SAR1A4GHQ3BNI5";
 	
 	
     @Override
