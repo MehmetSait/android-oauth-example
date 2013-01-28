@@ -4,11 +4,15 @@
 package com.foursquare.android.oauth;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.Toast;
 
 /**
@@ -27,12 +31,24 @@ public class ActivityWebView extends Activity
      */
     public static final String CALLBACK_URL = "https://www.p1.com/callback1";
     public static final String CLIENT_ID = "WA3WC32ZFC0ZNUFEIZLYQBJSVKTVRBCS10SAR1A4GHQ3BNI5";
+	public static String mytoken;
 	
+    public static String getAccessToken() {
+        return mytoken;
+    }
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
+
+        Button btn = (Button)findViewById(R.id.button2);
+        btn.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityWebView.this, ActivityWebView2.class);
+                startActivity(intent);
+            }
+        });
         
         String url =
             "https://foursquare.com/oauth2/authenticate" + 
@@ -45,6 +61,7 @@ public class ActivityWebView extends Activity
         //    http://YOUR_REGISTERED_REDIRECT_URI/#access_token=ACCESS_TOKEN
         //
         // We can override onPageStarted() in the web client and grab the token out.
+
         WebView webview = (WebView)findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setWebViewClient(new WebViewClient() {
@@ -58,6 +75,7 @@ public class ActivityWebView extends Activity
                     Log.v(TAG, "OAuth complete, token: [" + accessToken + "].");
                 	
                     Toast.makeText(ActivityWebView.this, "Token: " + accessToken, Toast.LENGTH_SHORT).show();
+                    mytoken = accessToken;
                 }
             }
         });

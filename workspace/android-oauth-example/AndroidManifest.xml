@@ -28,5 +28,9 @@
       android:name=".ActivityWebView"
       />
 
+    <activity
+      android:name=".ActivityWebView2"
+      />
+        
   </application>
 </manifest>
