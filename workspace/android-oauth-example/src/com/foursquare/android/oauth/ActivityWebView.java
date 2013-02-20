@@ -64,6 +64,7 @@ public class ActivityWebView extends Activity
 
         WebView webview = (WebView)findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
+        
         webview.setWebViewClient(new WebViewClient() {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 String fragment = "#access_token=";
